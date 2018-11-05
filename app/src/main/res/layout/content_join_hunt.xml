@@ -12,9 +12,33 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="331dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="134dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberPassword"
         android:text="Name"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="134dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="329dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="134dp"
+        android:text="Enter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editText"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
