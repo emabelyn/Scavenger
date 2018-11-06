@@ -36,7 +36,7 @@
         <activity
             android:name=".ParticipantMap"
             android:label="Scavenger"
-            android:parentActivityName=".JoinHunt">
+            android:parentActivityName=".HomeScreen">
         </activity>
     </application>
 
