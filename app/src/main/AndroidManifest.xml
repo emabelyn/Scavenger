@@ -32,8 +32,11 @@
         <activity
             android:name=".JoinHunt"
             android:label="@string/title_activity_join_hunt"
-            android:theme="@style/AppTheme.NoActionBar">
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ParticipantMap"
+            android:label="Scavenger"
+            android:parentActivityName=".JoinHunt">
         </activity>
     </application>
 
