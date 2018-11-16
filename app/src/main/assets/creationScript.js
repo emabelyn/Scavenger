@@ -23,7 +23,7 @@ marker.bindPopup("test POI for scavenger creation. center of map").openPopup();
 var popup = L.popup();
 
 
-    var markers = [];
+var markers = [];
 //function to add marker at click location with popup describing coordinate
 function addPOI(e){    
     var id;
@@ -33,22 +33,29 @@ function addPOI(e){
         id=markers[markers.length-1]._id+1;
     }    
 
-        var markerPOI = new L.marker(e.latlng, {draggable:false}).addTo(map);
-        markerPOI._id=id;
-        markerPOI.bindPopup('lat, lng at this POI: ' + 
-            e.latlng.toString() + '</br>' +
-            '<poi clue ssdfkjlfdskl </br>' +
-            '<button onclick="inputClue"> Edit Clues</button> ' +
-            '<button onclick="removePOI(' + id + 
-            ')"> Remove POI</button></br>').openPopup();
-        map.addLayer(markerPOI);
-        markers.push(markerPOI);
-    }
+    //POI marker and radius created on tap; POI marker assigned id num
+    var markerPOI = new L.marker(e.latlng, {draggable:false}).addTo(map);
+    markerPOI._id=id;
+    var markerRadius = new L.circle(e.latlng, {radius: 50}).addTo(map);
+    //bind circle to POI marker ^
+    markerPOI.circle = markerRadius;
+
+    markerPOI.bindPopup('lat, lng at this POI: ' + 
+        e.latlng.toString() + '</br>' +
+        '<poi clue ssdfkjlfdskl </br>' +
+        '<button onclick="inputClue"> Edit Clues</button> ' +
+        '<button onclick="removePOI(' + id + 
+        ')"> Remove POI</button></br>').openPopup();
+
+    map.addLayer(markerPOI);
+    markers.push(markerPOI);
+}
 
 function editClue(c){
 
 }
 
+//delete POI marker and corresponding radius circle
 function removePOI(id){
     console.log(markers);
     var newMarkers = [];
@@ -56,11 +63,12 @@ function removePOI(id){
     markers.forEach(function(marker){
         if(marker._id==id){
             map.removeLayer(marker);
+            map.removeLayer(marker.circle);
         }else{
             newMarkers.push(marker);
+            newMarkers.push(marker.circle);
         }
     })
-    markers = newMarkers;
 }
 
 
