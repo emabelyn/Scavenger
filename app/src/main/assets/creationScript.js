@@ -61,7 +61,7 @@ function addPOI(e){
     markerPOI.bindPopup('lat, lng at this POI: ' + 
         e.latlng.toString() + '</br>' +
         '<poi clue ssdfkjlfdskl </br>' +
-        '<button onclick="inputClue"> Edit Clues</button> ' +
+        '<button onclick="editClue"> Edit Clues</button> ' +
         '<button onclick="removePOI(' + id + 
         ')"> Remove POI</button></br>').openPopup();
 
