@@ -15,16 +15,33 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(map);
 
 
-//---------------------------------------------------------------
-
-//marker test with popup
+//------------------- marker test with popup ---------------------------
 var marker = L.marker([36.068196, -79.809081]).addTo(map).openPopup();
 marker.bindPopup("test POI for scavenger creation. center of map").openPopup();
 var popup = L.popup();
 
+//------------------------- location ---------------------------- 
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
 
+    L.marker(e.latlng).addTo(map)
+    .bindPopup("current location within circle").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
+//sets map view to user location
+map.locate({setView: true});
+//--------------- POI marker creation + radius  --------------------
 var markers = [];
-//function to add marker at click location with popup describing coordinate
+//add marker at click location with popup describing coordinates
 function addPOI(e){    
     var id;
     if(markers.length<1){
@@ -37,7 +54,8 @@ function addPOI(e){
     var markerPOI = new L.marker(e.latlng, {draggable:false}).addTo(map);
     markerPOI._id=id;
     var markerRadius = new L.circle(e.latlng, {radius: 50}).addTo(map);
-    //bind circle to POI marker ^
+   
+    //bind radius circle to POI marker ^
     markerPOI.circle = markerRadius;
 
     markerPOI.bindPopup('lat, lng at this POI: ' + 

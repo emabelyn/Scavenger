@@ -15,13 +15,27 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(map);
 
 
-//---------------------------------------------------------------
-
-//marker test with popup
+//------------------- marker test with popup ---------------------------
 var marker = L.marker([36.068196, -79.809081]).addTo(map).openPopup();
-marker.bindPopup("center of map. participant screen").openPopup();
+marker.bindPopup("test POI for scavenger creation. center of map").openPopup();
 var popup = L.popup();
 
+//------------------------- location ---------------------------- 
+function onLocationFound(e) {
+    var radius = e.accuracy / 2;
 
-//run through addPOI on click
-map.on('click', addPOI);
+    L.marker(e.latlng).addTo(map)
+    .bindPopup("current location within circle").openPopup();
+
+    L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+    alert(e.message);
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+
+//sets map view to user location
+map.locate({setView: true});
