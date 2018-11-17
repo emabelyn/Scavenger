@@ -61,19 +61,21 @@ function addPOI(e){
     markerPOI.bindPopup('lat, lng at this POI: ' + 
             e.latlng.toString() + '</br>' +
             '<poi clue ssdfkjlfdskl </br>' +
-            '<input type = "button" value= "Edit Clue" onclick= "editClue()">'+
+            '<button onclick="editClue()"> Edit Clue</button>' +
             '<button onclick="removePOI(' + id +
-            ')"> Remove POI</button></br>').openPopup();
+            ')"> Remove POI</button></br>' +
+            'Clue Description: ' +  + '</br>').openPopup();
 
         map.addLayer(markerPOI);
         markers.push(markerPOI);
     }
 
-    function editClue(){
+    function editClue(c){
 
-    var y = prompt("Enter Clue Description: ")
-    if (y != null) {
-        display(y);
+
+    var c = prompt("Enter Clue Description: ");
+    if (c != null) {
+        alert(c);
     }
 
 
