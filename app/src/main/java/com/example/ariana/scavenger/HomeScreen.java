@@ -14,33 +14,15 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
-
-
     }
 
     public void joinHunt (View view){
-
         startActivity(new Intent(getApplicationContext(), JoinHunt.class));
-
     }
 
     public void createHunt(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
 
