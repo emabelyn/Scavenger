@@ -19,6 +19,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
@@ -71,7 +74,4 @@ public class MainActivity extends AppCompatActivity {
         mWebView.loadUrl("file:///android_asset/creation.html");
         mTextMessage = (TextView) findViewById(R.id.message);
     }
-
-
-
 }
