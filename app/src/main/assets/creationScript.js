@@ -59,27 +59,19 @@ function addPOI(e){
     markerPOI.circle = markerRadius;
 
     markerPOI.bindPopup('lat, lng at this POI: ' + 
-            e.latlng.toString() + '</br>' +
-            '<poi clue ssdfkjlfdskl </br>' +
-            '<button onclick="editClue()"> Edit Clue</button>' +
-            '<button onclick="removePOI(' + id +
-            ')"> Remove POI</button></br>' +
-            'Clue Description: ' +  + '</br>').openPopup();
+        e.latlng.toString() + '</br>' +
+        '<poi clue ssdfkjlfdskl </br>' +
+        '<button onclick="editClue"> Edit Clues</button> ' +
+        '<button onclick="removePOI(' + id + 
+        ')"> Remove POI</button></br>').openPopup();
 
-        map.addLayer(markerPOI);
-        markers.push(markerPOI);
-    }
+    map.addLayer(markerPOI);
+    markers.push(markerPOI);
+}
 
-    function editClue(c){
+function editClue(c){
 
-
-    var c = prompt("Enter Clue Description: ");
-    if (c != null) {
-        alert(c);
-    }
-
-
-    }
+}
 
 //delete POI marker and corresponding radius circle
 function removePOI(id){

@@ -73,5 +73,15 @@ public class MainActivity extends AppCompatActivity {
         });
         mWebView.loadUrl("file:///android_asset/creation.html");
         mTextMessage = (TextView) findViewById(R.id.message);
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
+
     }
+
+
+
 }
