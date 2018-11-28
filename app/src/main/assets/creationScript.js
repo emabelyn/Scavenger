@@ -44,9 +44,13 @@ var markers = [];
 var c;
 
 function clue(){
-     c = prompt("Enter clue:");
-     if(c == null){
-     c = "no clue data"
+    var x = document.createElement("BUTTON");
+    var t = document.createTextNode("Click me");
+    x.appendChild(t);
+    document.body.appendChild(x);
+    c = prompt("Enter clue:");
+    if(c == null){
+    c = "no clue data"
      }
 }
 
