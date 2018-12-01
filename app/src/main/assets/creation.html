@@ -6,6 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <span id="buttonAppear"></span>
+    <span id="pop"></span>
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
    
     <!---font-awesome for home button to recenter --->
@@ -71,7 +72,7 @@
     <link rel="stylesheet" href="leaflet.zoomhome.css"/>
 	<script src="leaflet.zoomhome.min.js"></script>
 </head>
-<body onload="run()">
+<body>
 
 <div id='map'></div>
 
@@ -131,7 +132,8 @@
             ]};
 
     function submit(){
-        var x = alert("hello");
+        var seq = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+        var x = alert("Simulated: Your hunt has been submitted. Your hunt ID is: " + seq);
     }
 
     var numClue = 0;
@@ -147,7 +149,7 @@
         c = prompt("Enter clue:");
         if(c == null || c=="" ){
         c = "no clue data";
-         }
+        }
     }
 
     var markers = [];
@@ -155,7 +157,7 @@
     function addPOI(e){
         if(numClue > 4){
             var al = alert("no more clues");
-            document.getElementById("buttonAppear").innerHTML = '<button class="block" onclick="submit()">Some text here</button>';
+            document.getElementById("buttonAppear").innerHTML = '<button class="block" onclick="submit()">Submit Hunt</button>';
             }
         else{
             clue();
@@ -187,52 +189,9 @@
         }
 
     }
-
     function editPOI(id){
-        markers.forEach(function(marker){
-            if(marker._id==id){
-                map.removeLayer(marker);
-                map.removeLayer(marker.circle);
-            }
-        })
-
-       tLat = parseFloat(clues.clue[id].latlng);
-       var a = alert(tLat.toString());
-       clue();
-       createClue(numClue,clues.clue[id].latlng, clues.clue[id].lat, clues.clue[id].lon, c);
-
-       //POI marker and radius created on tap; POI marker assigned id num
-       var markerPOI = new L.marker(tLat, {draggable:false}).addTo(map);
-       markerPOI._id=numClue;
-       var markerRadius = new L.circle(tLat, {radius: 50}).addTo(map);
-
-       //bind radius circle to POI marker ^
-       markerPOI.circle = markerRadius;
-
-       markerPOI.bindPopup(
-          '<h2> Marker ID: '+(numClue) +'</br>' +
-          'Clue Information: ' + clues.clue[numClue].clue + ' </br>' +
-          'Clue lat: ' + clues.clue[numClue].lat + '</br>' +
-          'Clue lon: ' + clues.clue[numClue].lon + ' </h2></br>' +
-          '<button class="block2" onclick="editPOI(' + numClue +
-          ')"> Edit Clue</button></br>' +
-          '<button class="block1" onclick="removePOI(' + numClue +
-          ')"> Remove POI</button></br>').openPopup();
-
-
-          map.addLayer(markerPOI);
-          markers.push(markerPOI);
+        var x = alert("Function will be available soon");
     }
-
-
-
-
-
-
-
-
-
-
 
     //delete POI marker and corresponding radius circle
     function removePOI(id){
